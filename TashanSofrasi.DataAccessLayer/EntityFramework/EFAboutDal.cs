@@ -10,7 +10,7 @@ using TashanSofrasi.EntityLayer.Entities;
 
 namespace TashanSofrasi.DataAccessLayer.EntityFramework
 {
-    public class EFAboutDal : GenericRepository<About>, IGenericDal<About>
+    public class EFAboutDal : GenericRepository<About>, IAboutDal
     {
         public EFAboutDal(TashanSofrasiContext context) : base(context)
         {
