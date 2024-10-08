@@ -35,7 +35,7 @@ namespace TashanSofrasiSignalRApi.Controllers
             return Ok("Kategori başarıyla eklendi!");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteCategory(int id)
         {
             var value = _categoryService.TGetByID(id);
@@ -51,7 +51,7 @@ namespace TashanSofrasiSignalRApi.Controllers
             return Ok("Kategori başarıyla güncellendi!");
         }
 
-        [HttpGet("GetCategory")]
+        [HttpGet("{id}")]
         public IActionResult GetCategory(int id)
         {
             var value = _categoryService.TGetByID(id);

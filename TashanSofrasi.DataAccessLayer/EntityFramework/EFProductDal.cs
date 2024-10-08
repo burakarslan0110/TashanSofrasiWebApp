@@ -17,12 +17,12 @@ namespace TashanSofrasi.DataAccessLayer.EntityFramework
         {
         }
 
-        public List<Product> GetProductWithCategories()
-        {
-            using (var context = new TashanSofrasiContext())
-            {
-                return context.Products.Include(x=>x.Category).ToList();
-            }
-        }
-    }
+		public List<Product> GetProductWithCategories()
+		{
+			using (var context = new TashanSofrasiContext())
+			{
+				return context.Products.Include(x => x.Category).ToList();
+			}
+		}
+	}
 }

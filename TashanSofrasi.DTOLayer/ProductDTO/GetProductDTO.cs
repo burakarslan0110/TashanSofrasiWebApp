@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TashanSofrasi.DTOLayer.CategoryDTO;
 
 namespace TashanSofrasi.DTOLayer.ProductDTO
 {
@@ -14,5 +15,6 @@ namespace TashanSofrasi.DTOLayer.ProductDTO
         public decimal ProductPrice { get; set; }
         public string ProductImageURL { get; set; }
         public bool ProductStatus { get; set; }
-    }
+		public GetCategoryDTO Category { get; set; }
+	}
 }
