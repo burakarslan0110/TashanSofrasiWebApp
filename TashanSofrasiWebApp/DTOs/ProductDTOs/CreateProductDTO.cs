@@ -1,4 +1,6 @@
-﻿namespace TashanSofrasiWebApp.DTOs.ProductDTOs
+﻿using TashanSofrasiWebApp.DTOs.CategoryDTOs;
+
+namespace TashanSofrasiWebApp.DTOs.ProductDTOs
 {
 	public class CreateProductDTO
 	{
@@ -7,6 +9,6 @@
 		public decimal ProductPrice { get; set; }
 		public string ProductImageURL { get; set; }
 		public bool ProductStatus { get; set; }
-		public string CategoryID { get; set; }	
-	}
+        public int CategoryID { get; set; }
+    }
 }

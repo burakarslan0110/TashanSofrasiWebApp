@@ -42,8 +42,8 @@ namespace TashanSofrasiSignalRApi.Controllers
             return Ok("Yeni ürün kaydı başarıyla eklendi!");
         }
 
-        [HttpDelete]
-        public IActionResult DeleteProduct(int id)
+		[HttpDelete("{id}")]
+		public IActionResult DeleteProduct(int id)
         {
             var value = _productService.TGetByID(id);
             _productService.TDelete(value);
@@ -58,7 +58,7 @@ namespace TashanSofrasiSignalRApi.Controllers
             return Ok("Ürün kaydı başarıyla güncellendi!");
         }
 
-        [HttpGet("GetProduct")]
+        [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var value = _productService.TGetByID(id);

@@ -35,7 +35,7 @@ namespace TashanSofrasiSignalRApi.Controllers
             return Ok("Rezervasyon başarıyla yapıldı!");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteBooking(int id) 
         {
             var value = _bookingService.TGetByID(id);
@@ -51,7 +51,7 @@ namespace TashanSofrasiSignalRApi.Controllers
             return Ok("Rezervasyon başarıyla güncellendi!");
         }
 
-        [HttpGet("GetBooking")]
+        [HttpGet("{id}")]
         public IActionResult GetBooking(int id)
         {
             var value = _bookingService.TGetByID(id);
