@@ -35,7 +35,7 @@ namespace TashanSofrasiSignalRApi.Controllers
             return Ok("Yeni indirim kaydı başarıyla eklendi!");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteDiscount(int id)
         {
            var value = _discountService.TGetByID(id);
@@ -51,7 +51,7 @@ namespace TashanSofrasiSignalRApi.Controllers
             return Ok("İndirim kaydı başarıyla güncellendi");
         }
 
-        [HttpGet("GetDiscount")]
+        [HttpGet("{id}")]
         public IActionResult GetDiscount(int id)
         {
             var value = _discountService.TGetByID(id);

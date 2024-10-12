@@ -35,7 +35,7 @@ namespace TashanSofrasiSignalRApi.Controllers
             return Ok("Yeni referans kaydı başarıyla eklendi!");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteTestimonial(int id)
         {
             var value = _testimonialService.TGetByID(id);
@@ -51,7 +51,7 @@ namespace TashanSofrasiSignalRApi.Controllers
             return Ok("Referans kaydı başarıyla güncellendi");
         }
 
-        [HttpGet("GetTestimonial")]
+        [HttpGet("{id}")]
         public IActionResult GetTestimonial(int id)
         {
             var value = _testimonialService.TGetByID(id);

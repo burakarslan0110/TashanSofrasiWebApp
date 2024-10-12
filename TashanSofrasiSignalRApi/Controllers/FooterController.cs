@@ -35,7 +35,7 @@ namespace TashanSofrasiSignalRApi.Controllers
             return Ok("Yeni footer kaydı başarıyla eklendi!");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteFooter(int id)
         {
             var value = _footerService.TGetByID(id);
@@ -51,7 +51,7 @@ namespace TashanSofrasiSignalRApi.Controllers
             return Ok("Footer kaydı başarıyla güncellendi!");
         }
 
-        [HttpGet("GetFooter")]
+        [HttpGet("{id}")]
         public IActionResult GetFooter(int id)
         {
             var value = _footerService.TGetByID(id);

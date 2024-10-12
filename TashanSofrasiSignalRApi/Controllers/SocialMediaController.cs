@@ -35,8 +35,8 @@ namespace TashanSofrasiSignalRApi.Controllers
             return Ok("Sosyal medya kaydı başarıyla eklendi!");
         }
 
-        [HttpDelete]
-        public IActionResult DeleteSocialMedia(int id)
+        [HttpDelete("{id}")]
+		public IActionResult DeleteSocialMedia(int id)
         {
             var value = _socialMediaService.TGetByID(id);
             _socialMediaService.TDelete(value);
@@ -51,7 +51,7 @@ namespace TashanSofrasiSignalRApi.Controllers
             return Ok("Sosyal medya kaydı başarıyla güncellendi!");
         }
 
-        [HttpGet("GetSocialMedia")]
+        [HttpGet("{id}")]
         public IActionResult GetSocialMedia(int id)
         {
             var value = _socialMediaService.TGetByID(id);
