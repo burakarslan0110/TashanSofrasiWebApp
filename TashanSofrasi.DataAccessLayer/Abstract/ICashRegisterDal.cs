@@ -7,10 +7,8 @@ using TashanSofrasi.EntityLayer.Entities;
 
 namespace TashanSofrasi.DataAccessLayer.Abstract
 {
-    public interface ICategoryDal : IGenericDal<Category>
+    public interface ICashRegisterDal : IGenericDal<CashRegister>
     {
-       int CategoryCount();
-       int ActiveCategoryCount();
-       int PassiveCategoryCount();
+        decimal TotalCashRegisterAmount();
     }
 }

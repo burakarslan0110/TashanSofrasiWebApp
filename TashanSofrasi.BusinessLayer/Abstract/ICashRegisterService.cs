@@ -7,14 +7,8 @@ using TashanSofrasi.EntityLayer.Entities;
 
 namespace TashanSofrasi.BusinessLayer.Abstract
 {
-    public interface ICategoryService : IGenericService<Category>
+    public interface ICashRegisterService : IGenericService<CashRegister>
     {
-        int TCategoryCount();
-
-        int TActiveCategoryCount();
-
-        int TPassiveCategoryCount();
-
-
+        decimal TTotalCashRegisterAmount();
     }
 }

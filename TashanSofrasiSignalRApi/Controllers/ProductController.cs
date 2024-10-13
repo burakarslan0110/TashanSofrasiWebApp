@@ -65,5 +65,40 @@ namespace TashanSofrasiSignalRApi.Controllers
             return Ok(value);
         }
 
+        [HttpGet("ProductCount")]
+        public IActionResult ProductCount()
+        {
+            return Ok(_productService.TProductCount());
+        }
+
+        [HttpGet("ProductCountByCategoryNamePide")]
+        public IActionResult ProductCountByCategoryNamePide()
+        {
+           return Ok(_productService.TProductCountByCategoryNamePide());
+        }
+
+        [HttpGet("ProductCountByCategoryNameCorba")]
+        public IActionResult ProductCountByCategoryNameCorba()
+        {
+            return Ok(_productService.TProductCountByCategoryNameCorba());
+        }
+
+        [HttpGet("ProductAveragePrice")]
+        public IActionResult ProductAveragePrice()
+        {
+            return Ok(_productService.TProductAveragePrice());
+        }
+
+        [HttpGet("ProductWithHighestPrice")]
+        public IActionResult ProductWithHighestPrice()
+        {
+            return Ok(_productService.TProductWithHighestPrice());
+        }
+
+        [HttpGet("ProductWithLowestPrice")]
+        public IActionResult ProductWithLowestPrice()
+        {
+            return Ok(_productService.TProductWithLowestPrice());
+        }
     }
 }

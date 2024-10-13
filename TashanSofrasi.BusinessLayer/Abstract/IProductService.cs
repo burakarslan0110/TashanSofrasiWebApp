@@ -10,5 +10,16 @@ namespace TashanSofrasi.BusinessLayer.Abstract
     public interface IProductService : IGenericService<Product>
     {
         List<Product> TGetProductWithCategories();
+        int TProductCount();
+
+        int TProductCountByCategoryNamePide();
+
+        int TProductCountByCategoryNameCorba();
+
+        decimal TProductAveragePrice();
+
+        List<string> TProductWithHighestPrice();
+
+        List<string> TProductWithLowestPrice();
     }
 }

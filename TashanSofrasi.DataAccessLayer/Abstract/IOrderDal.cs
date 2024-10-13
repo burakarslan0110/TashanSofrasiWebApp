@@ -7,10 +7,11 @@ using TashanSofrasi.EntityLayer.Entities;
 
 namespace TashanSofrasi.DataAccessLayer.Abstract
 {
-    public interface ICategoryDal : IGenericDal<Category>
+    public interface IOrderDal : IGenericDal<Order>
     {
-       int CategoryCount();
-       int ActiveCategoryCount();
-       int PassiveCategoryCount();
+        int TotalOrderCount();
+        int ActiveOrderCount();
+        decimal LastOrderPrice();
+        decimal TodayAmount();
     }
 }

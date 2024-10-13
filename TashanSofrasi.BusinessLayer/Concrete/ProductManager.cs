@@ -47,5 +47,35 @@ namespace TashanSofrasi.BusinessLayer.Concrete
         {
             _productDal.Update(entity);
         }
+
+        public int TProductCount()
+        {
+            return _productDal.ProductCount();
+        }
+
+        public int TProductCountByCategoryNamePide()
+        {
+            return _productDal.ProductCountByCategoryNamePide();
+        }
+
+        public int TProductCountByCategoryNameCorba()
+        {
+            return _productDal.ProductCountByCategoryNameCorba();
+        }
+
+        public decimal TProductAveragePrice()
+        {
+            return _productDal.ProductAveragePrice();
+        }
+
+        public List<string> TProductWithHighestPrice()
+        {
+            return _productDal.ProductWithHighestPrice();
+        }
+
+        public List<string> TProductWithLowestPrice()
+        {
+            return _productDal.ProductWithLowestPrice();
+        }
     }
 }

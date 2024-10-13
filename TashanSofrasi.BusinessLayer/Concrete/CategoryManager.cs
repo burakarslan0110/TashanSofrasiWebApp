@@ -18,9 +18,16 @@ namespace TashanSofrasi.BusinessLayer.Concrete
             _categoryDal = categoryDal;
         }
 
+        
+
         public void TAdd(Category entity)
         {
             _categoryDal.Add(entity);
+        }
+
+        public int TCategoryCount()
+        {
+            return _categoryDal.CategoryCount();
         }
 
         public void TDelete(Category entity)
@@ -37,10 +44,18 @@ namespace TashanSofrasi.BusinessLayer.Concrete
         {
             return _categoryDal.GetListAll();
         }
-
+        
         public void TUpdate(Category entity)
         {
             _categoryDal.Update(entity);
+        }
+        public int TPassiveCategoryCount()
+        {
+            return _categoryDal.PassiveCategoryCount();
+        }
+        public int TActiveCategoryCount()
+        {
+            return _categoryDal.ActiveCategoryCount();
         }
     }
 }
