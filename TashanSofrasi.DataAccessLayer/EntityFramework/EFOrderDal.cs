@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace TashanSofrasi.DataAccessLayer.EntityFramework
         {
             using (var context = new TashanSofrasiContext())
             {
-                return context.Orders.Where(x => x.OrderDescription == "Aktif Sipariş").Count();
+                return context.Orders.Where(x => x.OrderStatus == false).Count();
             }
         }
 
@@ -34,9 +35,11 @@ namespace TashanSofrasi.DataAccessLayer.EntityFramework
 
         public decimal TodayAmount()
         {
+            
             using (var context = new TashanSofrasiContext())
             {
-                return context.Orders.Where(x=>x.OrderDescription == "Hesap Ödendi").Where(y=>y.Date == DateTime.Now).Sum(z=>z.TotalPrice);
+                DateTime NowDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+                return context.Orders.Where(x => x.OrderDate == NowDate && x.OrderStatus == true).Sum(y => y.TotalPrice);
             }
         }
 

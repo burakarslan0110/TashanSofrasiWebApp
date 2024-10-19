@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TashanSofrasi.DataAccessLayer.Concrete;
 
@@ -11,9 +12,11 @@ using TashanSofrasi.DataAccessLayer.Concrete;
 namespace TashanSofrasi.DataAccessLayer.Migrations
 {
     [DbContext(typeof(TashanSofrasiContext))]
-    partial class TashanSofrasiContextModelSnapshot : ModelSnapshot
+    [Migration("20241019122749_add-menutable-relations")]
+    partial class addmenutablerelations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,9 +224,8 @@ namespace TashanSofrasi.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MenuTableID"));
 
-                    b.Property<string>("MenuTableName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("MenuTableName")
+                        .HasColumnType("int");
 
                     b.Property<bool>("MenuTableStatus")
                         .HasColumnType("bit");
@@ -255,7 +257,8 @@ namespace TashanSofrasi.DataAccessLayer.Migrations
 
                     b.HasKey("OrderID");
 
-                    b.HasIndex("MenuTableID");
+                    b.HasIndex("MenuTableID")
+                        .IsUnique();
 
                     b.ToTable("Orders");
                 });
@@ -388,8 +391,8 @@ namespace TashanSofrasi.DataAccessLayer.Migrations
             modelBuilder.Entity("TashanSofrasi.EntityLayer.Entities.Order", b =>
                 {
                     b.HasOne("TashanSofrasi.EntityLayer.Entities.MenuTable", "MenuTable")
-                        .WithMany("Orders")
-                        .HasForeignKey("MenuTableID")
+                        .WithOne("Orders")
+                        .HasForeignKey("TashanSofrasi.EntityLayer.Entities.Order", "MenuTableID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -433,7 +436,8 @@ namespace TashanSofrasi.DataAccessLayer.Migrations
 
             modelBuilder.Entity("TashanSofrasi.EntityLayer.Entities.MenuTable", b =>
                 {
-                    b.Navigation("Orders");
+                    b.Navigation("Orders")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TashanSofrasi.EntityLayer.Entities.Order", b =>

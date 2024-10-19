@@ -36,7 +36,7 @@ namespace TashanSofrasiSignalRApi.Controllers
         [HttpGet("TodayAmount")]
         public IActionResult TodayAmount()
         {
-            return Ok(_orderService.TLastOrderPrice());
+            return Ok(_orderService.TTodayAmount());
         }
     }
 }

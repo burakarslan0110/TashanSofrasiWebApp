@@ -62,6 +62,9 @@ builder.Services.AddScoped<IOrderDetailDal, EFOrderDetailDal>();
 builder.Services.AddScoped<ICashRegisterService, CashRegisterManager>();
 builder.Services.AddScoped<ICashRegisterDal, EFCashRegisterDal>();
 
+builder.Services.AddScoped<IMenuTableService, MenuTableManager>();
+builder.Services.AddScoped<IMenuTableDal, EFMenuTableDal>();
+
 
 
 builder.Services.AddControllers();

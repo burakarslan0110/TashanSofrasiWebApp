@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TashanSofrasi.DataAccessLayer.Concrete;
 
@@ -11,9 +12,11 @@ using TashanSofrasi.DataAccessLayer.Concrete;
 namespace TashanSofrasi.DataAccessLayer.Migrations
 {
     [DbContext(typeof(TashanSofrasiContext))]
-    partial class TashanSofrasiContextModelSnapshot : ModelSnapshot
+    [Migration("20241019123314_add-menutable-relations2")]
+    partial class addmenutablerelations2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,9 +224,8 @@ namespace TashanSofrasi.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MenuTableID"));
 
-                    b.Property<string>("MenuTableName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("MenuTableName")
+                        .HasColumnType("int");
 
                     b.Property<bool>("MenuTableStatus")
                         .HasColumnType("bit");

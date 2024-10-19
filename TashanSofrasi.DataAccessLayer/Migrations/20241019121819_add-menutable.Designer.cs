@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TashanSofrasi.DataAccessLayer.Concrete;
 
@@ -11,9 +12,11 @@ using TashanSofrasi.DataAccessLayer.Concrete;
 namespace TashanSofrasi.DataAccessLayer.Migrations
 {
     [DbContext(typeof(TashanSofrasiContext))]
-    partial class TashanSofrasiContextModelSnapshot : ModelSnapshot
+    [Migration("20241019121819_add-menutable")]
+    partial class addmenutable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,9 +224,8 @@ namespace TashanSofrasi.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MenuTableID"));
 
-                    b.Property<string>("MenuTableName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("MenuTableName")
+                        .HasColumnType("int");
 
                     b.Property<bool>("MenuTableStatus")
                         .HasColumnType("bit");
@@ -241,21 +243,20 @@ namespace TashanSofrasi.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
 
-                    b.Property<int>("MenuTableID")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("Date");
 
                     b.Property<bool>("OrderStatus")
                         .HasColumnType("bit");
 
+                    b.Property<string>("OrderTableNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("OrderID");
-
-                    b.HasIndex("MenuTableID");
 
                     b.ToTable("Orders");
                 });
@@ -385,17 +386,6 @@ namespace TashanSofrasi.DataAccessLayer.Migrations
                     b.ToTable("Testimonials");
                 });
 
-            modelBuilder.Entity("TashanSofrasi.EntityLayer.Entities.Order", b =>
-                {
-                    b.HasOne("TashanSofrasi.EntityLayer.Entities.MenuTable", "MenuTable")
-                        .WithMany("Orders")
-                        .HasForeignKey("MenuTableID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("MenuTable");
-                });
-
             modelBuilder.Entity("TashanSofrasi.EntityLayer.Entities.OrderDetail", b =>
                 {
                     b.HasOne("TashanSofrasi.EntityLayer.Entities.Order", "Order")
@@ -429,11 +419,6 @@ namespace TashanSofrasi.DataAccessLayer.Migrations
             modelBuilder.Entity("TashanSofrasi.EntityLayer.Entities.Category", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("TashanSofrasi.EntityLayer.Entities.MenuTable", b =>
-                {
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("TashanSofrasi.EntityLayer.Entities.Order", b =>
